@@ -35,7 +35,7 @@
                         <tr width="50%">
                             <th>Shortcut Key</th><th>Action Description</th>
                         </tr>
-                        <tr><td width="25%">F2</td><td width="75%">Sortcut Tips</td></tr>
+                        <tr><td width="25%">F2</td><td width="75%">Shortcut Tips</td></tr>
                         <tr><td>S</td><td>Product search</td></tr>
                         <tr><td>Tab</td><td>Switch focus product search panel to individual product and one to another product</td></tr>
                         <tr><td>Q</td><td>Numeric pad "Qty" button select to change product line quantity</td></tr>
@@ -44,7 +44,7 @@
                         <tr><td>Backspace</td><td>Delete last number for "Qty", "Disc" and "Price"</td></tr>
                         <tr><td>0-9 (Numpad)</td><td>Change number for "Qty", "Disc" and "Price"</td></tr>
                         <tr><td>. (Numpad)</td><td>Point for numbers</td></tr>
-                        <tr><td>- (Numpad)</td><td>Switch number to negetive or positive</td></tr>
+                        <tr><td>- (Numpad)</td><td>Switch number to negative or positive</td></tr>
                         <tr><td>C</td><td>Open customer screen</td></tr>
                         <tr><td>Spacebar</td><td>Open payment screen</td></tr>
                         <tr><td>Delete</td><td>Delete selected order line from cart</td></tr>
