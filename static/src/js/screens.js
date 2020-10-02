@@ -55,7 +55,8 @@ odoo.define('custom_pos.screens', function (require) {
                     if(event.shiftKey && event.which == 57 ) {      // Ctrl+9 Help
                         $(document).find("span#shortcut_tips_btn").trigger("click");
                     }
-            if(event.shiftKey && event.which == 49 ) {      // Ctrl+1 Generic Product 
+            //if(event.shiftKey && event.which == 49 ) {      // Ctrl+1 Generic Product 
+            if(event.ctrlKey ) {      // Ctrl+1 Generic Product 
 		var product = self.pos.db.get_product_by_id(self.pos.config.iface_generic_product[0]);
 		self.pos.get_order().add_product(product);
                 self.numpad.state.changeMode('price');
@@ -91,13 +92,13 @@ odoo.define('custom_pos.screens', function (require) {
                }
                if(event.which == 109) {      // - NumPad decrement quantity if 0 remove product line 
 			var quantity = self.pos.get_order().get_selected_orderline().get_quantity();
-                        if (quantity != 0) {
+                        if (quantity != 1) {
 				quantity = quantity-1;
 				self.pos.get_order().get_selected_orderline().set_quantity(quantity);
 			}
-			else {
-                        	self.pos.get_order().remove_orderline(self.pos.get_order().get_selected_orderline());
-			}
+			//else {
+                        //	self.pos.get_order().remove_orderline(self.pos.get_order().get_selected_orderline());
+			//}
                }
                if(event.which == 32) {      // Space go to payment
                         self.actionpad.gui.show_screen('payment');
