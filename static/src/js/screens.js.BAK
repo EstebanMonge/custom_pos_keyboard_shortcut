@@ -52,77 +52,12 @@ odoo.define('custom_pos.screens', function (require) {
             this.product_screen_keydown_event_handler = function(event){
                 /* product screen key down events */
                 if(!$($(document).find(".product-screen")[0]).hasClass('oe_hidden')){
-                    if(event.shiftKey && event.which == 57 ) {      // Ctrl+9 Help
+                    if(event.which == 113) {      // click on "F2" button
                         $(document).find("span#shortcut_tips_btn").trigger("click");
                     }
-            if(event.shiftKey && event.which == 49 ) {      // Ctrl+1 Generic Product 
-		var product = self.pos.db.get_product_by_id(self.pos.config.iface_generic_product[0]);
-		self.pos.get_order().add_product(product);
-                self.numpad.state.changeMode('price');
-            }
-               if(event.shiftKey && event.which == 50){  // Ctrl+1 Product Quantity
-                        $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
-                        self.numpad.state.changeMode('quantity');
-               }
-               if(event.shiftKey && event.which == 51){  // Ctrl+1 Product Quantity
-                        $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
-                        self.numpad.state.changeMode('tare');
-               }
-               if(event.shiftKey && event.which == 52){  // Ctrl+1 Product Quantity
-                        $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
-                        self.numpad.state.changeMode('discount');
-               }
-               if(event.shiftKey && event.which == 53){   // Ctrl+2 Product Value 
-                        $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
-                        self.numpad.state.changeMode('price');
-               }
+                }
 
-               if( event.which == 112) {      // F1 Search
-                        $(document).find("div.product-screen div.rightpane div.searchbox input").focus();
-                        event.preventDefault();
-               }
-               if(event.which == 46) {      // Delete remove line 
-                        self.pos.get_order().remove_orderline(self.pos.get_order().get_selected_orderline());
-               }
-               if(event.which == 107) {      // + NumPad increment quantity
-			var quantity = self.pos.get_order().get_selected_orderline().get_quantity();
-			quantity = quantity+1;
-			self.pos.get_order().get_selected_orderline().set_quantity(quantity);
-               }
-               if(event.which == 109) {      // - NumPad decrement quantity if 0 remove product line 
-			var quantity = self.pos.get_order().get_selected_orderline().get_quantity();
-                        if (quantity != 0) {
-				quantity = quantity-1;
-				self.pos.get_order().get_selected_orderline().set_quantity(quantity);
-			}
-			else {
-                        	self.pos.get_order().remove_orderline(self.pos.get_order().get_selected_orderline());
-			}
-               }
-               if(event.which == 32) {      // Space go to payment
-                        self.actionpad.gui.show_screen('payment');
-               }
-
-               if(event.which >= 96 && event.which <= 105) {    // click on numpad 1-9 and 0 button
-                        var newChar = String.fromCharCode(event.which - 48 );
-                        self.numpad.state.appendNewChar(newChar);
-               }
-               if(event.which == 8){    // Backspace to delete price, quantity, discount if not delete line
-                        self.numpad.state.deleteLastChar();
-               }
-               if(event.which == 38) {      // Up arrow to select upper lines
-                        $(document).find("div.product-screen ul.orderlines li.selected").prev('li.orderline').trigger('click');
-               }
-               if(event.which == 40) {      // Down arrow to select lower lines
-                        $(document).find("div.product-screen ul.orderlines li.selected").next('li.orderline').trigger('click');
-               }
-               if(event.shiftKey && event.which == 55) {      // click on "c" button
-                        self.actionpad.gui.show_screen('clientlist');
-               }
-
-            }
-
-                /*if(!$(document).find(".search-input").is(":focus") && !$($(document).find(".product-screen")[0]).hasClass('oe_hidden')){
+                if(!$(document).find(".search-input").is(":focus") && !$($(document).find(".product-screen")[0]).hasClass('oe_hidden')){
                     if(event.which == 81){  // click on "q" button
                         self.numpad.state.changeMode('quantity');
                     } else if(event.which == 68){   // click on "d" button
@@ -152,7 +87,7 @@ odoo.define('custom_pos.screens', function (require) {
                         $(document).find("div.product-screen div.rightpane div.searchbox input").focus();
                         event.preventDefault();
                     }
-                }*/
+                }
 
                 /* payment screen key down events */
                 if(!$($(document).find("div.payment-screen")[0]).hasClass('oe_hidden')){

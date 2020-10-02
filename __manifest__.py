@@ -15,6 +15,7 @@
     'version': '0.1',
     'depends': ['point_of_sale'],
     'data': [
+        'views/view_pos_config.xml',
         'views/assets.xml',
     ],
     'qweb': [
