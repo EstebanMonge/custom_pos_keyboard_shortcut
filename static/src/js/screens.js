@@ -55,25 +55,39 @@ odoo.define('custom_pos.screens', function (require) {
                     if(event.shiftKey && event.which == 57 ) {      // Ctrl+9 Help
                         $(document).find("span#shortcut_tips_btn").trigger("click");
                     }
-            //if(event.shiftKey && event.which == 49 ) {      // Ctrl+1 Generic Product 
-            if(event.ctrlKey ) {      // Ctrl+1 Generic Product 
+            if(event.ctrlKey ) {      // Ctrl Generic Product 
 		var product = self.pos.db.get_product_by_id(self.pos.config.iface_generic_product[0]);
 		self.pos.get_order().add_product(product);
                 self.numpad.state.changeMode('price');
             }
-               if(event.shiftKey && event.which == 50){  // Ctrl+1 Product Quantity
+               if(event.which == 113){  // Shift+1 Create Product if module installed
+			var categ = [];
+			var unit = [];
+			for (var i in self.pos.categories){
+				categ.push(self.pos.categories[i].name);
+			}
+			for (var i in self.pos.units){
+				unit.push(self.pos.units[i].name);
+			}
+                        $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
+			self.gui.show_popup('product_create',{
+				'category': categ,
+                		'units':unit,
+            		});
+               }
+               if(event.shiftKey && event.which == 49){  // Shift+1 Product Quantity
                         $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
                         self.numpad.state.changeMode('quantity');
                }
-               if(event.shiftKey && event.which == 51){  // Ctrl+1 Product Quantity
+               if(event.shiftKey && event.which == 51){  // Shift+3 Tare
                         $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
                         self.numpad.state.changeMode('tare');
                }
-               if(event.shiftKey && event.which == 52){  // Ctrl+1 Product Quantity
+               if(event.shiftKey && event.which == 52){  // Shift+4 Product Quantity
                         $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
                         self.numpad.state.changeMode('discount');
                }
-               if(event.shiftKey && event.which == 53){   // Ctrl+2 Product Value 
+               if(event.shiftKey && event.which == 53){   // Shift+5 Product Value 
                         $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
                         self.numpad.state.changeMode('price');
                }
@@ -118,7 +132,8 @@ odoo.define('custom_pos.screens', function (require) {
                if(event.which == 40) {      // Down arrow to select lower lines
                         $(document).find("div.product-screen ul.orderlines li.selected").next('li.orderline').trigger('click');
                }
-               if(event.shiftKey && event.which == 55) {      // click on "c" button
+               if(event.shiftKey && event.which == 55) {      // Shift+7 client list 
+			self.gui.show_popup('product_create');
                         self.actionpad.gui.show_screen('clientlist');
                }
 
