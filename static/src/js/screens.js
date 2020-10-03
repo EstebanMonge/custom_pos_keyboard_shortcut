@@ -60,7 +60,11 @@ odoo.define('custom_pos.screens', function (require) {
 		self.pos.get_order().add_product(product);
                 self.numpad.state.changeMode('price');
             }
-               if(event.which == 113){  // Shift+1 Create Product if module installed
+               if(event.which == 114){  // F3 Create Product if module installed
+                        $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
+			self.gui.show_popup('update_price');
+               }
+               if(event.which == 113){  // F2 Create Product if module installed
 			var categ = [];
 			var unit = [];
 			for (var i in self.pos.categories){
@@ -111,7 +115,7 @@ odoo.define('custom_pos.screens', function (require) {
 				self.pos.get_order().get_selected_orderline().set_quantity(quantity);
 			}
                }
-               if(event.which == 32) {      // Space go to payment
+               if(event.which == 32 && $($(document).find(".modal-dialog-product-creation")[0]).hasClass('oe_hidden')) {      // Space go to payment
                         self.actionpad.gui.show_screen('payment');
                         var payMethodLength = $($(document).find("div.payment-screen")[0]).find("div.paymentmethods div.paymentmethod").length;
                         if(payMethodLength > 0){

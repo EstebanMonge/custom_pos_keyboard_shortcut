@@ -11,13 +11,13 @@
         </t>
     </t>
     <!-- for keyboard shortcut help button and details -->
-    <t t-extend="NumpadWidget">
+    <!--<t t-extend="NumpadWidget">
 		<t t-jquery=".numpad" t-operation="after">
 			<span class="control-button" id="shortcut_tips_btn" style="width: 384px;margin-right: 5px;margin-top: -8px;">
 				<i class='fa fa-info-circle' style="font-size:24px;"/> Shortcut Tips (F2)
 			</span>
 		</t>
-    </t>
+    </t>-->
     <t t-name="ShortcutTipsWidget">
         <div role="dialog" class="modal-dialog modal-dialog-shortcut-tips">
             <div class="popup popup-shortcut-tips" style="width:40%;height: 70%;">
