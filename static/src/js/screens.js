@@ -96,12 +96,13 @@ odoo.define('custom_pos.screens', function (require) {
 				quantity = quantity-1;
 				self.pos.get_order().get_selected_orderline().set_quantity(quantity);
 			}
-			//else {
-                        //	self.pos.get_order().remove_orderline(self.pos.get_order().get_selected_orderline());
-			//}
                }
                if(event.which == 32) {      // Space go to payment
                         self.actionpad.gui.show_screen('payment');
+                        var payMethodLength = $($(document).find("div.payment-screen")[0]).find("div.paymentmethods div.paymentmethod").length;
+                        if(payMethodLength > 0){
+                                $($($(document).find("div.payment-screen")[0]).find("div.paymentmethods div.paymentmethod")[payMethodLength-2]).addClass('highlight');
+                        }
                }
 
                if(event.which >= 96 && event.which <= 105) {    // click on numpad 1-9 and 0 button
@@ -122,39 +123,6 @@ odoo.define('custom_pos.screens', function (require) {
                }
 
             }
-
-                /*if(!$(document).find(".search-input").is(":focus") && !$($(document).find(".product-screen")[0]).hasClass('oe_hidden')){
-                    if(event.which == 81){  // click on "q" button
-                        self.numpad.state.changeMode('quantity');
-                    } else if(event.which == 68){   // click on "d" button
-                        self.numpad.state.changeMode('discount');
-                    } else if(event.which == 80){   // click on "p" button
-                        self.numpad.state.changeMode('price');
-                    } else if(event.which == 8){    // click on "Backspace" button
-                        self.numpad.state.deleteLastChar();
-                    } else if(event.which >= 96 && event.which <= 105) {    // click on numpad 1-9 and 0 button
-                        var newChar = String.fromCharCode(event.which - 48 );
-                        self.numpad.state.appendNewChar(newChar);
-                    } else if(event.which == 109) {     // click on numpad "-" button
-                        self.numpad.state.switchSign();
-                    } else if(event.which == 110) {     // click on numpad "." button
-                        self.numpad.state.appendNewChar('.');
-                    } else if(event.which == 67) {      // click on "c" button
-                        self.actionpad.gui.show_screen('clientlist');
-                    } else if(event.which == 32) {      // click on "space" button
-                        self.actionpad.gui.show_screen('payment');
-                    } else if(event.which == 46) {      // click on "Delete" button
-                        self.pos.get_order().remove_orderline(self.pos.get_order().get_selected_orderline());
-                    } else if(event.which == 38) {      // click on "up arrow" button
-                        $(document).find("div.product-screen ul.orderlines li.selected").prev('li.orderline').trigger('click');
-                    } else if(event.which == 40) {      // click on "down arrow" button
-                        $(document).find("div.product-screen ul.orderlines li.selected").next('li.orderline').trigger('click');
-                    } else if(event.which == 83) {      // click on "s" button
-                        $(document).find("div.product-screen div.rightpane div.searchbox input").focus();
-                        event.preventDefault();
-                    }
-                }*/
-
                 /* payment screen key down events */
                 if(!$($(document).find("div.payment-screen")[0]).hasClass('oe_hidden')){
                     if (event.which == 27) {     // click on "Esc" button
