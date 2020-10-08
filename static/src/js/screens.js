@@ -15,7 +15,7 @@ odoo.define('custom_pos.screens', function (require) {
             this._super(parent,options);
 
             this.keypress_product_handler = function(ev){
-                // React only to SPACE to avoid interfering with warcode scanner which sends ENTER
+                // React only to SPACE to avoid interfering with barcode scanner which sends ENTER
                 if (ev.which != 13) {
                     return;
                 }
@@ -60,7 +60,7 @@ odoo.define('custom_pos.screens', function (require) {
 		self.pos.get_order().add_product(product);
                 self.numpad.state.changeMode('price');
             }
-               if(event.which == 114){  // F3 Create Product if module installed
+               if(event.which == 115){  // F3 Create Product if module installed
                         $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
 			self.gui.show_popup('update_price');
                }
