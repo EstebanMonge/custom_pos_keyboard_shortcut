@@ -98,6 +98,7 @@ odoo.define('custom_pos.screens', function (require) {
 
                if( event.which == 112) {      // F1 Search
                         $(document).find("div.product-screen div.rightpane div.searchbox input").focus();
+                        $(document).find("div.mobile-search-bar div.searchbox input").focus();
                         event.preventDefault();
                }
                if(event.which == 46) {      // Delete remove line 
@@ -139,6 +140,12 @@ odoo.define('custom_pos.screens', function (require) {
                if(event.shiftKey && event.which == 55) {      // Shift+7 client list 
 			self.gui.show_popup('product_create');
                         self.actionpad.gui.show_screen('clientlist');
+               }
+               if(event.which == 27 && !$($(document).find(".modal-dialog-product-creation")[0]).hasClass('oe_hidden')) {      // Esc to cancel product creation 
+                        $(document).find(".cancel").trigger('click');
+               }
+               if(event.which == 27 && !$($(document).find(".modal-dialog-update-price")[0]).hasClass('oe_hidden')) {      // Esc to cancel update price 
+                        $(document).find(".cancel").trigger('click');
                }
 
             }
