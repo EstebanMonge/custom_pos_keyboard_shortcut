@@ -61,8 +61,16 @@ odoo.define('custom_pos.screens', function (require) {
                 self.numpad.state.changeMode('price');
             }
                if(event.which == 115){  // F3 Create Product if module installed
+			var taxe= [];
+		        for (var i in self.pos.staxes){
+           			 if ( self.pos.staxes[i].type_tax_use == 'sale') {
+                			taxe.push(self.pos.staxes[i].name);
+            			}
+        		}
                         $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
-			self.gui.show_popup('update_price');
+			self.gui.show_popup('update_price',{
+                		'tax':taxe,
+            		});
                }
                if(event.which == 113){  // F2 Create Product if module installed
 			var categ = [];
