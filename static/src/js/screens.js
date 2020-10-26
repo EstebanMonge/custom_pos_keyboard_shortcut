@@ -67,16 +67,24 @@ odoo.define('custom_pos.screens', function (require) {
                if(event.which == 113){  // F2 Create Product if module installed
 			var categ = [];
 			var unit = [];
+			var taxe= [];
 			for (var i in self.pos.categories){
 				categ.push(self.pos.categories[i].name);
 			}
 			for (var i in self.pos.units){
 				unit.push(self.pos.units[i].name);
 			}
+		        for (var i in self.pos.staxes){
+           			 if ( self.pos.staxes[i].type_tax_use == 'sale') {
+                			taxe.push(self.pos.staxes[i].name);
+            			}
+        		}
+
                         $(document).find("div.product-screen div.rightpane div.searchbox input").blur();
 			self.gui.show_popup('product_create',{
 				'category': categ,
                 		'units':unit,
+                		'tax':taxe,
             		});
                }
                if(event.shiftKey && event.which == 49){  // Shift+1 Product Quantity
