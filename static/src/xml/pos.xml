@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" extend_id="point_of_sale.template">
-    <t t-extend="ProductCategoriesWidget">
+<!--    <t t-extend="ProductCategoriesWidget">
         <t t-jquery="div" t-operation="replace">
             <header class='rightpane-header'>
                 <div class="searchbox">
@@ -10,6 +10,7 @@
             </header>
         </t>
     </t>
+-->
     <!-- for keyboard shortcut help button and details -->
     <!--<t t-extend="NumpadWidget">
 		<t t-jquery=".numpad" t-operation="after">
