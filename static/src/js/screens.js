@@ -42,6 +42,9 @@ odoo.define('custom_pos.screens', function (require) {
             this._super(parent,options);
 
             var self = this;
+            //var _t = core._t;
+            //var decimal_point = _t.database.parameters.decimal_point;
+	    //alert(decimal_point);
 
             this.actionpad = new screens.ActionpadWidget(this,{});
             this.actionpad.replace(this.$('.placeholder-ActionpadWidget'));
@@ -229,10 +232,10 @@ odoo.define('custom_pos.screens', function (require) {
                 if(!$($(document).find("div.clientlist-screen")[0]).hasClass('oe_hidden')){
                     if (event.which == 27) {            // click on "Esc" button
                         $($(document).find("div.clientlist-screen")[0]).find("span.back").trigger('click');
-                    } else if(event.which == 83) {      // click on "s" button
+                    } /*else if(event.which == 83) {      // click on "s" button
                         $(document).find("div.clientlist-screen span.searchbox input").focus();
                         event.preventDefault();
-                    } else if(event.which == 38) {      // click on "Arrow Up" button
+                    } */else if(event.which == 38) {      // click on "Arrow Up" button
                         if($(document).find("div.clientlist-screen table.client-list tbody.client-list-contents tr.highlight").length > 0){
                             $(document).find("div.clientlist-screen table.client-list tbody.client-list-contents tr.highlight").prev("tr.client-line").click();
                         }else{
